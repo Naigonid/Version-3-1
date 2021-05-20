@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\GScia\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\GScia\\.nuget\\packages"
+    ]
+  }
+}

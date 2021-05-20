@@ -1,0 +1,82 @@
+@using Sciaraffia.Helper
+@using Sciaraffia.Entidades
+@model RegistroH
+
+
+<div class="row">
+    
+    <div class="col-12 col-sm-12 col-md-12 col-lg-5 border border-dark rounded py-3 mx-1 my-1 row"> 
+        <h1>Agendar Cita</h1> 
+        <form asp-action="SetRegistroH" asp-controller="home" method="POST" class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 my-3"> 
+                <input id="fecha_atencion" type="date" asp-for="fecha" class="shadow col-lg-6" value="" style="border-radius: 15px; background-color:#ffff80;">
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 my-3">
+                <select id="horario1" class="form-control select-css col-lg-6 border border-dark" asp-for="hora">
+                        <option value="" disabled="" selected="">Selecciona una hora</option>
+                        <option value="09:00">09:00</option>
+                        <option value="09:30">09:30</option>
+                        <option value="10:00">10:00</option>
+                        <option value="10:30">10:30</option>
+                        <option value="11:00">11:00</option>
+                        <option value="11:30">11:30</option>
+                        <option value="12:00">12:00</option>
+                        <option value="12:30">12:30</option>
+                        <option value="14:30">14:30</option>  
+                        <option value="15:00">15:00</option>  
+                        <option value="15:30">15:30</option>  
+                        <option value="16:00">16:00</option>  
+                        <option value="16:30">16:30</option>
+                        <option value="17:30">17:30</option> 
+                        <option value="17:30">17:30</option>                    
+                    </select>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 my-3">
+                <input type="hidden" asp-for="nombre" class="form-control"  value="@SessionHelper.GetNameIdentifier(User)">
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 my-3">
+                <button type="submit" class="btn btn-primary">Agendar</button>
+            </div>
+        </form>
+
+    </div>
+
+
+
+
+
+
+
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-5 border border-dark rounded py-3 mx-1 my-1 row" >
+        <h1>Citas Agendadas</h1> 
+        <ul class="list-group border border-dark col-12 col-sm-12 col-md-12 col-lg-12" style="height: 300px;overflow: scroll; ">
+            
+            @* @for(int i = 0; i <= Total -1; i++){ *@
+            @foreach (HorarioCita g in ViewBag.Registro){
+           
+               @* aca deberia de ir el ciclo *@
+            <li class="list-group-item">
+            <div class="input-group" style="display:table; width:100%;">
+
+                <strong style="display: table-cell; border:1px solid #ccc; padding: 0 8px; vertical-align: middle;">@g.fecha - @g.hora - @g.usuario </strong>            
+                
+                <span  style="display: table-cell; width: 40px; ">
+                    <a class="btn btn-danger mx-2 col-12 col-sm-12 col-md-12 col-lg-12" type="submit"asp-action="EliminarHora" asp-controller="home" asp-route-id="@g.serial">Borrar</a>
+                </span>
+                
+            </div>
+            </li>
+            @* fin del ciclo *@   
+            }
+          
+        </ul>
+    </div>  
+</div>
+@* 
+
+
+
+                 *@  

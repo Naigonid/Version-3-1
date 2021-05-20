@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"]="Login";
+}
+@model Usser
+
+
+    <h1>Iniciar Sessión</h1>
+    <form asp-action="SetLogin" asp-controller="home" method="POST" id="Login">
+
+    <div class="form-group col-md-6">
+        <label >Correo</label>
+        <input type="Email"asp-for="correo" class="form-control">
+        <span asp-validation-for="correo" class="badge text-danger"></span>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label >Clave</label>
+        <input  type="Password" asp-for="clave" class="form-control">
+        <span asp-validation-for="clave" class="badge text-danger"></span>
+    </div>
+
+
+<div class="row">
+<button type="submit" class="btn btn-primary">REGISTRAR</button>
+</div>
+</form>
